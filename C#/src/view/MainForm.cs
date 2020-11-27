@@ -1,8 +1,10 @@
 using System.Windows.Forms;
 
-class MainForm : Form
+class MainForm
 {
-    private Button[,] board = new Button[8,8];
+    private Form form = new Form();
+
+    private Field[,] board = new Field[8,8];
 
     public MainForm()
     {
@@ -12,8 +14,8 @@ class MainForm : Form
 
     private void FormSettings()
     {
-        base.Width = 820;
-        base.Height = 820;
+        form.Width = 820;
+        form.Height = 820;
     }
 
     private void CreateFields()
@@ -23,7 +25,7 @@ class MainForm : Form
             {
                 var field = new Field(x, y);
                 board[x, y] = field; 
-                base.Controls.Add(field);
+                form.Controls.Add(field);
             }
     }
 }
