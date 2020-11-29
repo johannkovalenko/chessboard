@@ -1,20 +1,20 @@
-package model.interim;
+package view.interim;
 
 import model.*;
 
 public class Methods {
-    public static String getFigureText(int x, int y, Field[][] board) {
-        return Color(x, y, board) + "\r\n" + Figure(x, y, board);
+    public static String getFigureText(Figure figure, Color color) {
+        return Color(color) + "\r\n" + Figure(figure);
     }
 
-    private static String Figure(int x, int y, Field[][] board) {
-        switch (board[x][y].figure) {
+    private static String Figure(Figure figure) {
+        switch (figure) {
             case KING:
-                return "Król";
+                return "Krol";
             case QUEEN:
                 return "Hetman";
             case ROOK:
-                return "Wieża";
+                return "Wieza";
             case BISHOP:
                 return "Goniec";
             case KNIGHT:
@@ -27,12 +27,12 @@ public class Methods {
 
     }
 
-    private static String Color(int x, int y, Field[][] board) {
-        switch (board[x][y].color) {
+    private static String Color(Color color) {
+        switch (color) {
             case WHITE:
-                return "white";
+                return "Bia";
             case BLACK:
-                return "black";
+                return "Cza";
             default:
                 return "";
         }

@@ -8,8 +8,12 @@ public class Board {
         fill();
     }
 
-    public String INTERIMReturnFigureDescription(int x, int y) {
-        return model.interim.Methods.getFigureText(x, y, board);
+    public Figure GetFigure(int x, int y) {
+        return board[x][y].figure;
+    }
+
+    public Color GetColor(int x, int y) {
+        return board[x][y].color;
     }
 
     private void generate() {
@@ -32,6 +36,12 @@ public class Board {
 
             board[6][y].figure = Figure.PAWN;
             board[6][y].color = Color.WHITE;
-        }            
+        }  
+
+        board[0][0].figure = Figure.ROOK;
+        board[0][0].color = Color.BLACK;
+
+        board[0][7].figure = Figure.ROOK;
+        board[0][7].color = Color.BLACK;            
     }
 }

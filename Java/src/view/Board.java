@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import model.*;
 
 public class Board {
     private JFrame frame = new JFrame("JavaBoard");
@@ -15,8 +16,8 @@ public class Board {
         frame.add(panel);
     }
 
-    public void setFigureText(int x, int y, String text) {
-        board[x][y].setText(text);
+    public void setFigure(int x, int y, Figure figure, Color color) {
+        board[x][y].setText(view.interim.Methods.getFigureText(figure, color));
     }
 
     private void createFields() {
