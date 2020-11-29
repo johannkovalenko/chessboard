@@ -1,3 +1,10 @@
 java\src\app.java
-java\src\view\MainForm.java
+java\src\view\Form.java
+java\src\view\Board.java
 java\src\view\Field.java
+java\src\model\Figure.java
+java\src\model\Color.java
+java\src\model\Field.java
+java\src\model\Board.java
+java\src\model\interim\Methods.java
+java\src\controller\Controller.java
