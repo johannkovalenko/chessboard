@@ -2,16 +2,25 @@ package view;
 
 import javax.swing.*;
 import model.*;
+import controller.*;
 
-public class Board {
-    private JFrame frame = new JFrame("JavaBoard");
+public class Board implements Runnable{
+    private JFrame frame = new JFrame("Chess Board");
     private JPanel panel = new JPanel();
 
-    private Field[][] board = new Field[8][];
+    private Controller controller;
 
-    public Board() {
+    private Field[][] board = new Field[8][];
+    private model.Board modelBoard = new model.Board();
+
+    public void run() {
+
+        controller  = new Controller(this, modelBoard);
+
         frameSettings();
         createFields();
+
+        controller.initializeBoard();
 
         frame.add(panel);
     }
@@ -27,7 +36,7 @@ public class Board {
 
             for (int y = 0; y < 8; y++)
             {
-                Field field = new Field(x, y, frame);
+                Field field = new Field(x, y, controller);
 
                 board[x][y] = field; 
                 panel.add(field);              

@@ -1,5 +1,3 @@
-package view;
-
 import javax.swing.*;
 
 import model.*;   
@@ -12,7 +10,7 @@ public class Form implements Runnable {
     private Controller controller;
 
     public void run() {        
-        viewBoard   = new view.Board();
+        viewBoard   = new view.Board(controller);
         modelBoard  = new model.Board();
         controller  = new Controller(viewBoard, modelBoard);
 

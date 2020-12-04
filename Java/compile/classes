@@ -1,10 +1,14 @@
 java\src\app.java
-java\src\view\Form.java
 java\src\view\Board.java
 java\src\view\Field.java
 java\src\model\Figure.java
 java\src\model\Color.java
 java\src\model\Field.java
 java\src\model\Board.java
+java\src\model\generate\Generate.java
+java\src\model\legalmoves\LegalMoves.java
+java\src\model\legalmoves\Pawn.java
+java\src\model\legalmoves\Strategy.java
 java\src\view\interim\Methods.java
+java\src\controller\Stage.java
 java\src\controller\Controller.java

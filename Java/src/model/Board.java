@@ -1,11 +1,16 @@
 package model;
 
+import java.util.*;
+import model.legalmoves.*;
+
+import model.generate.*;
+
 public class Board {
-    private Field[][] board;
+    private Field[][] board = new Field[8][];
+    private Strategy strategy = new Strategy();
 
     public Board() {
-        generate();
-        fill();
+        new Generate().run(board);
     }
 
     public Figure GetFigure(int x, int y) {
@@ -16,32 +21,11 @@ public class Board {
         return board[x][y].color;
     }
 
-    private void generate() {
-        board = new Field[8][];
-        
-        for (int x = 0; x < 8; x++)
-        {
-            board[x] = new Field[8];
-
-            for (int y = 0; y < 8; y++)
-                board[x][y] = new Field();
-        }
+    public List<java.awt.Point> LegalMoves(int x, int y)
+    {
+        LegalMoves legalMoves = strategy.get(board[x][y].figure);
+        return legalMoves.Calculate(x, y, board[x][y].color);
     }
 
-    private void fill() {
-        for (int y=0; y<8; y++)
-        {
-            board[1][y].figure = Figure.PAWN;
-            board[1][y].color = Color.BLACK;
 
-            board[6][y].figure = Figure.PAWN;
-            board[6][y].color = Color.WHITE;
-        }  
-
-        board[0][0].figure = Figure.ROOK;
-        board[0][0].color = Color.BLACK;
-
-        board[0][7].figure = Figure.ROOK;
-        board[0][7].color = Color.BLACK;            
-    }
 }

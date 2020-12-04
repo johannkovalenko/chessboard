@@ -5,8 +5,7 @@ public class app {
 
     public static void main(String[] args) {
 
-        Runnable form = new Form();
-        form.run();        
+        new Board().run();        
         //SwingUtilities.invokeLater(form);
     }
 }
