@@ -10,6 +10,7 @@ class Field extends JButton
 {
     private int x;
     private int y;
+    private Color defaultBackgroundColor;
 
     private Controller controller;
     
@@ -18,9 +19,10 @@ class Field extends JButton
         this.x = x;
         this.y = y;
         this.controller = controller;
+        this.defaultBackgroundColor = getBackgroundColor();
 
         super.setBounds(x * 100, y * 100, 100, 100);
-        super.setBackground(GetBackgroundColor());
+        super.setBackground(defaultBackgroundColor);
         super.setPreferredSize(new java.awt.Dimension(100, 100));
         super.setForeground(GetTextColor());
 
@@ -33,7 +35,16 @@ class Field extends JButton
         super.addActionListener(actionListener);
     }
 
-    private Color GetBackgroundColor() {
+    public void set(String text) {
+        super.setText(text);
+        super.setForeground(GetTextColor());
+    }
+
+    public void setStandardBackground() {
+        super.setBackground(defaultBackgroundColor);
+    }
+
+    private Color getBackgroundColor() {
         Color beige = new Color(252, 204, 116);
         Color brown = new Color(87, 58, 46);
 

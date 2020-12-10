@@ -1,6 +1,7 @@
 package controller;
 
-import java.util.*;
+import java.util.List;
+import java.awt.Point;
 
 import view.*;
 import model.*;
@@ -10,6 +11,8 @@ public class Controller {
     private model.Board modelBoard;
 
     private Stage stage = Stage.FIRSTCLICK;
+    List<Point> legalMoves;
+    Point firstClick;
 
     public Controller (view.Board viewBoard, model.Board modelBoard) {
         this.viewBoard = viewBoard;
@@ -27,20 +30,58 @@ public class Controller {
     }
 
     public void OnClick(int x, int y)
-    {
-        List<java.awt.Point> legalMoves = modelBoard.LegalMoves(x, y);
+    {              
         switch (stage)
         {
-            case NOTCLICKED:
-
-                break;
             case FIRSTCLICK:
+                if (modelBoard.GetFigure(x, y) == Figure.NOFIGURE)
+                    return;
+
+                firstClick = new Point(x, y);
+
+                legalMoves = modelBoard.legalMoves(x, y);
+
+                for (Point point : legalMoves)
+                    viewBoard.setLegalMovesBackground(point.x, point.y);
+
+                stage = Stage.SECONDCLICK;
                 
-                break;
+                return;
 
             case SECONDCLICK:
+                if (x == firstClick.x && y == firstClick.y)
+                {
+                    System.out.println("Same point");
+                    setStandardBackground();
+                    stage = Stage.FIRSTCLICK;
+                    return;
+                }
+                else {
+                    for (Point point : legalMoves)
+                        if (point.x == x && point.y == y) {
+                            Figure figure   = modelBoard.GetFigure(firstClick.x, firstClick.y);
+                            Color color     = modelBoard.GetColor(firstClick.x, firstClick.y);
 
-                break;
+                            modelBoard.setAndReset(firstClick.x, firstClick.y, x, y);
+                            
+                            viewBoard.setFigure(x, y, figure, color);
+                            
+                            viewBoard.reset(firstClick.x, firstClick.y);
+                            setStandardBackground();
+                            stage = Stage.FIRSTCLICK;
+                            return;
+                        }
+                }
+
+                System.out.println("Illegal move");
+                
+                return;
         }
+    }
+
+    private void setStandardBackground()
+    {
+        for (Point point : legalMoves)
+            viewBoard.setStandardBackground(point.x, point.y);
     }
 }

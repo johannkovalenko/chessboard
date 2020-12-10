@@ -7,8 +7,8 @@ import model.*;
 public class Strategy {
     private Map<String, LegalMoves> strategies = new HashMap<String, LegalMoves>();
 
-    public Strategy() {
-        strategies.put("pawn", new Pawn());
+    public Strategy(Field[][] board) {
+        strategies.put("pawn", new Pawn(board));
     }
 
     public LegalMoves get(Figure figure) {

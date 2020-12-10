@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import model.*;
 import controller.*;
+import view.interim.Methods;
 
 public class Board implements Runnable{
     private JFrame frame = new JFrame("Chess Board");
@@ -25,8 +26,23 @@ public class Board implements Runnable{
         frame.add(panel);
     }
 
+    public void setLegalMovesBackground(int x, int y)
+    {
+        board[x][y].setBackground(java.awt.Color.RED);
+    }
+
+    public void setStandardBackground(int x, int y)
+    {
+        board[x][y].setStandardBackground();
+    }    
+
     public void setFigure(int x, int y, Figure figure, Color color) {
-        board[x][y].setText(view.interim.Methods.getFigureText(figure, color));
+        board[x][y].set(Methods.getFigureText(figure, color));
+    }
+
+    public void reset(int x, int y)
+    {
+        board[x][y].setText("");
     }
 
     private void createFields() {
