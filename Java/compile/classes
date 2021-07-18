@@ -8,6 +8,9 @@ java\src\model\Board.java
 java\src\model\generate\Generate.java
 java\src\model\legalmoves\LegalMoves.java
 java\src\model\legalmoves\Pawn.java
+java\src\model\legalmoves\Bishop.java
+java\src\model\legalmoves\Queen.java
+java\src\model\legalmoves\Rook.java
 java\src\model\legalmoves\Strategy.java
 java\src\view\interim\Methods.java
 java\src\controller\Stage.java

@@ -5,16 +5,25 @@ import java.util.*;
 import model.*;
 
 public class Strategy {
-    private Map<String, LegalMoves> strategies = new HashMap<String, LegalMoves>();
+    private LegalMoves pawn, bishop, queen, rook;
 
     public Strategy(Field[][] board) {
-        strategies.put("pawn", new Pawn(board));
+        pawn    = new Pawn(board);
+        bishop  = new Bishop(board);
+        queen   = new Queen(board);
+        rook    = new Rook(board);
     }
 
     public LegalMoves get(Figure figure) {
         switch (figure) {
             case PAWN:
-                return strategies.get("pawn");
+                return pawn;
+            case BISHOP:
+                return bishop;
+            case QUEEN:
+                return queen;
+            case ROOK:
+                return rook;
             default:
                 return null;
         }

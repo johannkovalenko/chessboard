@@ -43,6 +43,19 @@ public class Pawn extends LegalMoves {
     }
 
     private void black(List<Point> points, int x, int y) {
-        //if 
+       if (super.board[x + 1][y].color == Color.NOCOLOR)
+            points.add(new Point(x + 1, y));
+
+        if (y > 0)
+            if (super.board[x + 1][y - 1].color == Color.WHITE)
+                points.add(new Point(x + 1, y - 1));
+
+        if (y < 7)
+            if (super.board[x + 1][y + 1].color == Color.WHITE)
+                points.add(new Point(x + 1, y + 1));
+
+        if (x == 1)
+            if (super.board[x + 2][y].color == Color.NOCOLOR)
+                points.add(new Point(x + 2, y));
     }
 }
